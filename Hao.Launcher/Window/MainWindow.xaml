@@ -19,6 +19,9 @@
         <RowDefinition Height="12" />
       </Grid.RowDefinitions>
       <Grid Name="TopGrid" Grid.Row="0">
+                <Grid.Background>
+                    <ImageBrush ImageSource="pack://application:,,,/Resource/Image/mws-dark-bg.png"></ImageBrush>
+                </Grid.Background>
         <StackPanel ZIndex="99" Orientation="Horizontal" Width="Auto" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="50,0,0,0">
           <TextBlock VerticalAlignment="Center" TextBlock.FontSize="16" TextBlock.Foreground="#FFFFFFFF" Text="{Binding LocationWeatherInfo.City}" />
           <Image Width="25" Height="25" Margin="5,0" Source="{Binding LocationWeatherInfo.ImageUrl}" />
@@ -27,50 +30,7 @@
                 <Grid Name="TopGrid1" hc:WindowAttach.IsDragElement="True">
         </Grid>
         <WrapPanel HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,80,0" Cursor="Hand">
-          <Button Name="Like" Background="#00000000" Tag="{Binding CanLike, Mode=TwoWay}" Command="{Binding LikeBeePCCmd}" Click="Like_OnClick">
-            <Button.Resources>
-              <Storyboard x:Key="upAndGone">
-                <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="image" Storyboard.TargetProperty="(UIElement.Opacity)">
-                  <SplineDoubleKeyFrame KeyTime="00:00:00" Value="1" />
-                  <SplineDoubleKeyFrame KeyTime="00:00:00.5" Value="0.3" />
-                  <SplineDoubleKeyFrame KeyTime="00:00:01.5000000" Value="0" />
-                </DoubleAnimationUsingKeyFrames>
-                <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="image" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)">
-                  <SplineDoubleKeyFrame KeyTime="00:00:00" Value="-10" />
-                  <SplineDoubleKeyFrame KeyTime="00:00:02" Value="-60" />
-                  <SplineDoubleKeyFrame KeySpline="0,0,0,1" KeyTime="00:00:03.5000000" Value="-100" />
-                </DoubleAnimationUsingKeyFrames>
-                <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="image" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)">
-                  <SplineDoubleKeyFrame KeyTime="00:00:00" Value="0" />
-                  <SplineDoubleKeyFrame KeyTime="00:00:00.8" Value="15" />
-                  <SplineDoubleKeyFrame KeySpline="0,0,0,1" KeyTime="00:00:03.5000000" Value="-10" />
-                </DoubleAnimationUsingKeyFrames>
-              </Storyboard>
-            </Button.Resources>
-            <Button.Triggers>
-              <EventTrigger RoutedEvent="ButtonBase.Click">
-                <BeginStoryboard Storyboard="{StaticResource upAndGone}" />
-              </EventTrigger>
-            </Button.Triggers>
-            <Button.Content>
-              <WrapPanel HorizontalAlignment="Right" Margin="0,0,0,0">
-                <Image Source="pack://application:,,,/Resource/Image/like.png" Width="20" Height="20" />
-                <Grid>
-                  <TextBlock Name="Number" TextBlock.Foreground="#FFFFFFFF" Margin="2,0" Background="#00FFFFFF" TextBlock.TextAlignment="Right" TextBlock.FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding LikeNumber}" />
-                  <TextBlock Name="image" Width="20" Height="20" Margin="5,0,0,0" Opacity="0" Text="+1" TextBlock.Foreground="#FFFFFFFF">
-                    <TextBlock.RenderTransform>
-                      <TransformGroup>
-                        <ScaleTransform />
-                        <SkewTransform />
-                        <RotateTransform />
-                        <TranslateTransform />
-                      </TransformGroup>
-                    </TextBlock.RenderTransform>
-                  </TextBlock>
-                </Grid>
-              </WrapPanel>
-            </Button.Content>
-          </Button>
+
           <Button Name="Share" Background="#00000000"  Click="Share_OnClick">
             <Button.Content>
               <WrapPanel HorizontalAlignment="Right" Margin="5,0,0,0" WindowChrome.IsHitTestVisibleInChrome="True" Cursor="Hand">
@@ -93,7 +53,7 @@
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="0" Margin="2,0,2,5" Background="#00D5D5D5">
           <Image Grid.Row="0" Panel.ZIndex="0" Source="pack://application:,,,/Resource/Image/bg_left.png" />
-          <Image Grid.Row="0" Panel.ZIndex="1" Source="pack://application:,,,/Resource/Image/logo.png" Stretch="Fill" VerticalAlignment="Bottom" Margin="0,40" Width="{Binding Source.PixelWidth, Mode=OneWay, RelativeSource={RelativeSource Self}}" Height="{Binding Source.PixelHeight, Mode=OneWay, RelativeSource={RelativeSource Self}}" />
+      
           <ListBox Grid.Row="0" Panel.ZIndex="999" Margin="0,41,0,0" Background="#00D5D5D5" ItemsSource="{Binding ImageLinkData.Navbars}" SelectedItem="{Binding SelectedNavbar}">
             <ListBox.Style>
               <Style>
@@ -286,22 +246,11 @@
             <ColumnDefinition />
           </Grid.ColumnDefinitions>
           <StackPanel Grid.Column="0" Margin="5">
-            <Image Source="pack://application:,,,/Resource/Image/we_chat.jpg" HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Height="65">
-                            <hc:Interaction.Triggers>
-                                <hc:EventTrigger EventName="MouseLeftButtonUp" />
-              </hc:Interaction.Triggers>
-            </Image>
+         
             <TextBlock Text="公众号" HorizontalAlignment="Center" VerticalAlignment="Center" />
           </StackPanel>
           <StackPanel Grid.Column="1" Margin="5">
-            <Image Source="pack://application:,,,/Resource/Image/qq_qr.png" HorizontalAlignment="Center" VerticalAlignment="Center" Cursor="Hand" Height="65">
-                            <hc:Interaction.Triggers>
-                                <hc:EventTrigger EventName="MouseLeftButtonUp">
-                                    <hc:EventToCommand CommandParameter="{Binding Config.QQUrl}" Command="{Binding OpenUrlCmd}" />
-                </hc:EventTrigger>
-              </hc:Interaction.Triggers>
-            </Image>
-            <TextBlock Text="扫码加群" HorizontalAlignment="Center" VerticalAlignment="Center" />
+
           </StackPanel>
         </Grid>
       </Grid>

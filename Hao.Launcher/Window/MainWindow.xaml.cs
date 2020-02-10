@@ -196,35 +196,7 @@ namespace Hao.Launcher.Window
 
 		private void Like_OnClick(object sender, RoutedEventArgs e)
 		{
-			string str;
-			this.CanLike = this.times < 10;
-			if ((bool)this.Like.Tag)
-			{
-				this.times++;
-				this.writeLike2File();
-				if (!this.CanLike)
-				{
-					this.Like.Tag = false;
-				}
-			}
-			else
-			{
-				e.Handled = true;
-				MessageBoxInfo messageBoxInfo = new MessageBoxInfo()
-				{
-					Caption = "小蜜蜂提示"
-				};
-				if (this.Number.Text == "暂无数据")
-				{
-					str = "服务器连接异常，稍后重试";
-				}
-				else
-				{
-					str = (this.Number.Text == "" ? "请稍后" : "今日点赞次数已达上限（十次），欢迎明日再来～\r\n                    杭州嗡嗡科技感谢您的支持！");
-				}
-				messageBoxInfo.Message = str;
-				HandyControl.Controls.MessageBox.Show(messageBoxInfo);
-			}
+			
 		}
 
 		private void MainWindow_Activated(object sender, EventArgs e)
@@ -252,32 +224,7 @@ namespace Hao.Launcher.Window
 
 		private void readLikeData()
 		{
-			this.Like.Tag = true;
-			try
-			{
-				if (File.Exists(this.path))
-				{
-					string str = File.ReadAllText(this.path);
-					if (!string.IsNullOrEmpty(str))
-					{
-						string[] strArrays = str.Split(new char[] { '$' });
-						if (strArrays[0] == DateTime.Now.ToShortDateString())
-						{
-							if (int.TryParse(strArrays[1], out this.times))
-							{
-								if (this.times >= 10)
-								{
-									this.Like.Tag = false;
-								}
-							}
-						}
-					}
-				}
-			}
-			catch (Exception exception)
-			{
-				Console.WriteLine(exception);
-			}
+		
 		}
 
 		private void Share_OnClick(object sender, RoutedEventArgs e)

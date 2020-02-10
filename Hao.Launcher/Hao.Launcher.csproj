@@ -249,6 +249,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="resource\AppStart.ico" />
+    <Resource Include="resource\image\mws-dark-bg.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
