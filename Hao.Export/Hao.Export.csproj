@@ -1,0 +1,164 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{CFA1EF4E-6B88-4029-83B3-3BFE26EA28FC}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Adsk.RPCA.MachineData</RootNamespace>
+    <AssemblyName>AdskCNC</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Output\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="RevitAPI, Version=19.0.0.0, Culture=neutral, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\Autodesk\Revit 2019\RevitAPI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="RevitAPIUI, Version=19.0.0.0, Culture=neutral, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\Autodesk\Revit 2019\RevitAPIUI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CamExporter.cs" />
+    <Compile Include="CamExportException.cs" />
+    <Compile Include="CamIntExportStatus.cs" />
+    <Compile Include="CamIntOverwriteMode.cs" />
+    <Compile Include="CNCDataBase.cs" />
+    <Compile Include="CNCFileNameParser.cs" />
+    <Compile Include="CNCProjectData.cs" />
+    <Compile Include="Events\CamExportingAssemblyIntEventArgs.cs" />
+    <Compile Include="Events\CamExportingIntEventArgs.cs" />
+    <Compile Include="Events\CamIntEvents.cs" />
+    <Compile Include="Events\ICamExportIntEventArgs.cs" />
+    <Compile Include="ExportReinfData.cs" />
+    <Compile Include="FileFormat.cs" />
+    <Compile Include="ICamExportIntOptions.cs" />
+    <Compile Include="ItBracedGirderData.cs" />
+    <Compile Include="ItCNCDataFactory.cs" />
+    <Compile Include="ItCNCFileWriter.cs" />
+    <Compile Include="ItCreatePXML.cs" />
+    <Compile Include="ItMachineDataBase.cs" />
+    <Compile Include="ItMachineDataExtensions.cs" />
+    <Compile Include="ItMachineDataSlab.cs" />
+    <Compile Include="ItMachineDataSlabGD.cs" />
+    <Compile Include="ItMachineDataSlabHC.cs" />
+    <Compile Include="ItMachineDataSlabSD.cs" />
+    <Compile Include="ItMachineDataWall.cs" />
+    <Compile Include="ItMachineDataWallDB.cs" />
+    <Compile Include="ItMachineDataWallLF.cs" />
+    <Compile Include="ItMachineDataWallML.cs" />
+    <Compile Include="ItMachineDataWallSD.cs" />
+    <Compile Include="ItMachineDataWallSW.cs" />
+    <Compile Include="ItUniWrapperImpl.cs" />
+    <Compile Include="LayerData.cs" />
+    <Compile Include="MountingPartData.cs" />
+    <Compile Include="ProjectCoordinates.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PXML\ItAlloc.cs" />
+    <Compile Include="PXML\ItAnchorBar.cs" />
+    <Compile Include="PXML\ItBar.cs" />
+    <Compile Include="PXML\ItDocument.cs" />
+    <Compile Include="PXML\ItFeedback.cs" />
+    <Compile Include="PXML\ItGirder.cs" />
+    <Compile Include="PXML\ItGirderExt.cs" />
+    <Compile Include="PXML\ItOrder.cs" />
+    <Compile Include="PXML\ItOutline.cs" />
+    <Compile Include="PXML\ItProduct.cs" />
+    <Compile Include="PXML\ItPXMLItem.cs" />
+    <Compile Include="PXML\ItRegion.cs" />
+    <Compile Include="PXML\ItSection.cs" />
+    <Compile Include="PXML\ItSegment.cs" />
+    <Compile Include="PXML\ItShape.cs" />
+    <Compile Include="PXML\ItSlab.cs" />
+    <Compile Include="PXML\ItSpacer.cs" />
+    <Compile Include="PXML\ItSteel.cs" />
+    <Compile Include="PXML\ItSteelExt.cs" />
+    <Compile Include="PXML\ItSVertex.cs" />
+    <Compile Include="PXML\ItWeldingPoint.cs" />
+    <Compile Include="PXML\ShapeMode.cs" />
+    <Compile Include="ReinfSorter.cs" />
+    <Compile Include="SteelGroup.cs" />
+    <Compile Include="SteelGroupElement.cs" />
+    <Compile Include="SteelGroupElementAreaReinf.cs" />
+    <Compile Include="SteelGroupElementGirder.cs" />
+    <Compile Include="SteelGroupElementMeshBase.cs" />
+    <Compile Include="SteelGroupElementMeshCFS.cs" />
+    <Compile Include="SteelGroupElementMeshSFS.cs" />
+    <Compile Include="SteelGroupElementRebar.cs" />
+    <Compile Include="SteelGroupElementRebarBase.cs" />
+    <Compile Include="VoidsAndMountParts.cs" />
+    <Compile Include="WireItem.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AdskBase\AdskBase.csproj">
+      <Project>{ebce67a5-9a8a-4090-9501-a76b1c9bccbc}</Project>
+      <Name>AdskBase</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AdskGe\AdskGe.csproj">
+      <Project>{23501083-D483-47AF-BC55-02DFCF370B96}</Project>
+      <Name>AdskGe</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AdskLocalisation\AdskLocalisation.csproj">
+      <Project>{a8a15420-9389-4c59-894f-452b99e56edd}</Project>
+      <Name>AdskLocalisation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AdskRevitUI\AdskRevitUI.csproj">
+      <Project>{E22588A7-7657-4DE4-9B9D-0B60D6889A30}</Project>
+      <Name>AdskRevitUI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AdskRvtBase\AdskRvtBase.csproj">
+      <Project>{8324D37D-2C08-48B4-A6C6-E8396E9B3C9A}</Project>
+      <Name>AdskRvtBase</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AdskRvtGeometry\AdskRvtGeometry.csproj">
+      <Project>{0ad2f679-c369-411a-b5fd-77a537f825d8}</Project>
+      <Name>AdskRvtGeometry</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AdskSlab\AdskSlab.csproj">
+      <Project>{5b33c848-cfbd-4c05-b6d8-b7c8c7ce1364}</Project>
+      <Name>AdskSlab</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AdskWall\AdskWall.csproj">
+      <Project>{5173bd49-bce8-4027-bf85-15f68d7fbb4c}</Project>
+      <Name>AdskWall</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PrecastUtils\PrecastUtils.csproj">
+      <Project>{7908c3a8-4b95-4f6b-8608-ea0cac5f0880}</Project>
+      <Name>PrecastUtils</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
