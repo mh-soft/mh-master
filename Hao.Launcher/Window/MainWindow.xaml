@@ -1,0 +1,311 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hc:BlurWindow x:Class="Hao.Launcher.Window.MainWindow" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen" Height="654" MinHeight="654" MaxHeight="654" Width="1050" MinWidth="1050" WindowStyle="None" MaxWidth="1050" hc:GlobalShortcut.Host="True" Title="BeePC" DataContext="{Binding Main, Source={StaticResource Locator}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"   xmlns:gif="http://wpfanimatedgif.codeplex.com" xmlns:hc="https://handyorg.github.io/handycontrol" xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:command="http://www.galasoft.ch/mvvmlight">
+    <hc:BlurWindow.Resources>
+    <ResourceDictionary>
+      <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Hao.Launcher;component/skins/mainskin.xaml" />
+      </ResourceDictionary.MergedDictionaries>
+    </ResourceDictionary>
+  </hc:BlurWindow.Resources>
+  <hc:GlobalShortcut.KeyBindings>
+    <KeyBinding Modifiers="Control+Alt" Key="I" Command="{Binding Main.OnKeyDownICmd, Source={StaticResource Locator}}" />
+  </hc:GlobalShortcut.KeyBindings>
+  <Grid Name="LayoutRoot">
+    <Grid Name="MainGrid">
+      <Grid.RowDefinitions>
+        <RowDefinition Height="67" MaxHeight="67" MinHeight="67" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="120" />
+        <RowDefinition Height="12" />
+      </Grid.RowDefinitions>
+      <Grid Name="TopGrid" Grid.Row="0">
+        <StackPanel ZIndex="99" Orientation="Horizontal" Width="Auto" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="50,0,0,0">
+          <TextBlock VerticalAlignment="Center" TextBlock.FontSize="16" TextBlock.Foreground="#FFFFFFFF" Text="{Binding LocationWeatherInfo.City}" />
+          <Image Width="25" Height="25" Margin="5,0" Source="{Binding LocationWeatherInfo.ImageUrl}" />
+          <TextBlock VerticalAlignment="Center" TextBlock.FontSize="16" TextBlock.Foreground="#FFFFFFFF" Text="{Binding LocationWeatherInfo.Temperature}" />
+        </StackPanel>
+                <Grid Name="TopGrid1" hc:WindowAttach.IsDragElement="True">
+        </Grid>
+        <WrapPanel HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,80,0" Cursor="Hand">
+          <Button Name="Like" Background="#00000000" Tag="{Binding CanLike, Mode=TwoWay}" Command="{Binding LikeBeePCCmd}" Click="Like_OnClick">
+            <Button.Resources>
+              <Storyboard x:Key="upAndGone">
+                <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="image" Storyboard.TargetProperty="(UIElement.Opacity)">
+                  <SplineDoubleKeyFrame KeyTime="00:00:00" Value="1" />
+                  <SplineDoubleKeyFrame KeyTime="00:00:00.5" Value="0.3" />
+                  <SplineDoubleKeyFrame KeyTime="00:00:01.5000000" Value="0" />
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="image" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)">
+                  <SplineDoubleKeyFrame KeyTime="00:00:00" Value="-10" />
+                  <SplineDoubleKeyFrame KeyTime="00:00:02" Value="-60" />
+                  <SplineDoubleKeyFrame KeySpline="0,0,0,1" KeyTime="00:00:03.5000000" Value="-100" />
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="image" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)">
+                  <SplineDoubleKeyFrame KeyTime="00:00:00" Value="0" />
+                  <SplineDoubleKeyFrame KeyTime="00:00:00.8" Value="15" />
+                  <SplineDoubleKeyFrame KeySpline="0,0,0,1" KeyTime="00:00:03.5000000" Value="-10" />
+                </DoubleAnimationUsingKeyFrames>
+              </Storyboard>
+            </Button.Resources>
+            <Button.Triggers>
+              <EventTrigger RoutedEvent="ButtonBase.Click">
+                <BeginStoryboard Storyboard="{StaticResource upAndGone}" />
+              </EventTrigger>
+            </Button.Triggers>
+            <Button.Content>
+              <WrapPanel HorizontalAlignment="Right" Margin="0,0,0,0">
+                <Image Source="pack://application:,,,/Resource/Image/like.png" Width="20" Height="20" />
+                <Grid>
+                  <TextBlock Name="Number" TextBlock.Foreground="#FFFFFFFF" Margin="2,0" Background="#00FFFFFF" TextBlock.TextAlignment="Right" TextBlock.FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding LikeNumber}" />
+                  <TextBlock Name="image" Width="20" Height="20" Margin="5,0,0,0" Opacity="0" Text="+1" TextBlock.Foreground="#FFFFFFFF">
+                    <TextBlock.RenderTransform>
+                      <TransformGroup>
+                        <ScaleTransform />
+                        <SkewTransform />
+                        <RotateTransform />
+                        <TranslateTransform />
+                      </TransformGroup>
+                    </TextBlock.RenderTransform>
+                  </TextBlock>
+                </Grid>
+              </WrapPanel>
+            </Button.Content>
+          </Button>
+          <Button Name="Share" Background="#00000000"  Click="Share_OnClick">
+            <Button.Content>
+              <WrapPanel HorizontalAlignment="Right" Margin="5,0,0,0" WindowChrome.IsHitTestVisibleInChrome="True" Cursor="Hand">
+                <Image Source="pack://application:,,,/Resource/Image/share.png" Width="20" Height="20" Margin="0,0,0,0" />
+                <TextBlock Text="分享" TextBlock.FontWeight="Bold" Margin="2,0" TextBlock.Foreground="#FFFFFFFF" Background="#00FFFFFF" TextBlock.TextAlignment="Left" HorizontalAlignment="Center" VerticalAlignment="Center" />
+              </WrapPanel>
+            </Button.Content>
+          </Button>
+        </WrapPanel>
+        <StackPanel ZIndex="999" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,15,0">
+                    <Button Name="Min" HorizontalAlignment="Right" VerticalAlignment="Center" Height="30" Width="30" Margin="0,0,0,0" Background="#01000000" hc:BorderElement.CornerRadius="0"  FontSize="16" WindowChrome.IsHitTestVisibleInChrome="True" Content="—" Foreground="#FFFFFFFF" Click="Min_OnClick" />
+                    <Button Height="30"  Width="30" Background="#01000000" Margin="0" Foreground="White" HorizontalAlignment="Right" WindowChrome.IsHitTestVisibleInChrome="True" Content="X"  FontSize="16" Click="ButtonClose_OnClick" />
+        </StackPanel>
+      </Grid>
+      <Grid Name="MiddleGrid" Grid.Row="1">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="150" />
+          <ColumnDefinition Width="*" />
+          <ColumnDefinition Width="150" />
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0" Margin="2,0,2,5" Background="#00D5D5D5">
+          <Image Grid.Row="0" Panel.ZIndex="0" Source="pack://application:,,,/Resource/Image/bg_left.png" />
+          <Image Grid.Row="0" Panel.ZIndex="1" Source="pack://application:,,,/Resource/Image/logo.png" Stretch="Fill" VerticalAlignment="Bottom" Margin="0,40" Width="{Binding Source.PixelWidth, Mode=OneWay, RelativeSource={RelativeSource Self}}" Height="{Binding Source.PixelHeight, Mode=OneWay, RelativeSource={RelativeSource Self}}" />
+          <ListBox Grid.Row="0" Panel.ZIndex="999" Margin="0,41,0,0" Background="#00D5D5D5" ItemsSource="{Binding ImageLinkData.Navbars}" SelectedItem="{Binding SelectedNavbar}">
+            <ListBox.Style>
+              <Style>
+                <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Disabled" />
+                <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled" />
+              </Style>
+            </ListBox.Style>
+            <ListBox.ItemTemplate>
+              <DataTemplate>
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Cursor="Hand" Width="150" Height="40" Background="#00FFFFFF">
+                  <Image Source="pack://application:,,,/Resource/Image/triangle.png" Stretch="None" Margin="40,0,0,0" />
+                  <hc:Badge HorizontalAlignment="Center" BadgeMargin="0,10,-30,0" Height="40" FontSize="12"  Text="{Binding NewCount}" Tag="{Binding Images}" Visibility="{Binding NewCount, Mode=OneWay, Converter={StaticResource Int2VisibilityConverter}}">
+                    <TextBlock Margin="3,0,0,0" TextBlock.TextAlignment="Center" TextBlock.Foreground="#FF000000" TextBlock.FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding NavbarName}" />
+                  </hc:Badge>
+                  <TextBlock Margin="3,0,0,0" TextBlock.TextAlignment="Center" TextBlock.Foreground="#FF000000" TextBlock.FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="{Binding NewCount, Converter={StaticResource Int2VisibilityInverseConverter}}" Text="{Binding NavbarName}" />
+                </StackPanel>
+              </DataTemplate>
+            </ListBox.ItemTemplate>
+            <ListBox.ItemContainerStyle>
+              <Style TargetType="{x:Type ListBoxItem}">
+                <Setter Property="FrameworkElement.OverridesDefaultStyle" Value="True" />
+                <Setter Property="UIElement.SnapsToDevicePixels" Value="True" />
+                <Setter Property="Control.Foreground" Value="#FF000000" />
+                <Setter Property="FrameworkElement.Height" Value="38" />
+                <Setter Property="Control.Background" Value="#FF5D5D5D" />
+                <Setter Property="Control.FontSize" Value="18" />
+                <Setter Property="Control.VerticalContentAlignment" Value="Center" />
+                <Setter Property="Control.HorizontalContentAlignment" Value="Center" />
+                <Setter Property="Control.Template">
+                  <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                      <Border Name="border" CornerRadius="0" Margin="0" BorderBrush="#FFAFAFAF" BorderThickness="0,0,0,1">
+                        <ContentPresenter HorizontalAlignment="{TemplateBinding Control.HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding Control.VerticalContentAlignment}" Margin="0,0,0,0" />
+                      </Border>
+                      <ControlTemplate.Triggers>
+                        <Trigger Property="ListBoxItem.IsSelected" Value="True">
+                          <Setter Property="Control.Foreground" Value="#FF000000" />
+                          <Setter Property="Control.Background" Value="#FF5D5D5D" />
+                          <Setter TargetName="border" Property="Border.Background" Value="#FFDDDDDD" />
+                          <Setter TargetName="border" Property="Border.BorderBrush" Value="#FF46679A" />
+                          <Setter TargetName="border" Property="Border.BorderThickness" Value="2,0,0,1" />
+                        </Trigger>
+                        <MultiTrigger>
+                          <MultiTrigger.Conditions>
+                            <Condition Property="UIElement.IsMouseOver" Value="True" />
+                            <Condition Property="ListBoxItem.IsSelected" Value="False" />
+                          </MultiTrigger.Conditions>
+                          <MultiTrigger.Setters>
+                            <Setter Property="Control.Foreground" Value="#FF000000" />
+                            <Setter Property="Control.Background" Value="#FF5D5D5D" />
+                            <Setter TargetName="border" Property="Border.Background" Value="#FFD5D5D5" />
+                            <Setter TargetName="border" Property="Border.BorderBrush" Value="#FF46679A" />
+                            <Setter TargetName="border" Property="Border.BorderThickness" Value="0,0,0,1" />
+                          </MultiTrigger.Setters>
+                        </MultiTrigger>
+                      </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                  </Setter.Value>
+                </Setter>
+              </Style>
+            </ListBox.ItemContainerStyle>
+          </ListBox>
+        </Grid>
+        <Grid Grid.Column="1" HorizontalAlignment="Stretch" Margin="5">
+                    <hc:TransitioningContentControl>
+                        <hc:Carousel Name="Carousel" IsCenter="True" AutoRun="False" Cursor="Hand" Width="740" Height="440" Tag="{Binding SelectedNavbar.Carousel}" ItemsSource="{Binding SelectedNavbar.Images, Converter={StaticResource Url2ImageConverter}}" ButtonBase.Click="Carousel_OnClick">
+                            <hc:Carousel.Resources>
+                <Style x:Key="{x:Type ItemsPresenter}" TargetType="{x:Type ItemsPresenter}">
+                  <Setter Property="UIElement.IsEnabled" Value="{Binding OpenLink}" />
+                </Style>
+              </hc:Carousel.Resources>
+            </hc:Carousel>
+          </hc:TransitioningContentControl>
+        </Grid>
+        <Grid ZIndex="-1" Grid.Column="2" Margin="2,0,2,5" Cursor="Hand" PreviewMouseLeftButtonUp="Carousel_PreviewMouseLeftButtonUp">
+          <Grid.Background>
+            <ImageBrush TileMode="Tile" Viewport="0,0,1,1" ImageSource="{Binding SmallImageUrl}" />
+          </Grid.Background>
+        </Grid>
+      </Grid>
+      <Grid Name="BottomGrid" Grid.Row="2">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="272" />
+          <ColumnDefinition Width="*" />
+          <ColumnDefinition Width="272" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+          <RowDefinition Height="23" />
+          <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Image Grid.ColumnSpan="3" Grid.Column="0" Grid.Row="1" Grid.RowSpan="1" Source="../Resource/Image/bg.png" />
+        <StackPanel Name="StackPanelGif" Background="#FFFFFFFF" Height="Auto" Width="1050" HorizontalAlignment="Right" Grid.ColumnSpan="3" Grid.Column="0" Grid.Row="1" />
+        <Border Grid.Row="0" Grid.Column="0" Style="{StaticResource GridBorder}" BorderThickness="1" />
+        <StackPanel Grid.Row="0" Grid.Column="0">
+          <TextBlock Text="历史工程" VerticalAlignment="Center" HorizontalAlignment="Left" TextBlock.TextAlignment="Left" Margin="22,4" TextBlock.FontWeight="Bold" />
+        </StackPanel>
+        <Grid Grid.Row="1" Grid.Column="0" Background="#33F8F8F8">
+          <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+          </Grid.RowDefinitions>
+          <ListBox Name="ListBox" Grid.Row="0" Grid.Column="0" Background="{StaticResource TranslucenceBackgroundBrush}" IsEnabled="{Binding CanOpen}" ItemsSource="{Binding HistoryFiles}">
+                        <hc:Interaction.Triggers>
+                            <hc:EventTrigger EventName="MouseDoubleClick">
+                                <hc:EventToCommand Command="{Binding OnOpenRevitCmd}" CommandParameter="{Binding SelectedItem, ElementName=ListBox}" />
+              </hc:EventTrigger>
+            </hc:Interaction.Triggers>
+            <ListBox.ItemContainerStyle>
+              <Style TargetType="{x:Type ListBoxItem}">
+                <Setter Property="Control.Background" Value="{StaticResource TranslucenceBackgroundBrush}" />
+                <Setter Property="FrameworkElement.MaxHeight" Value="30" />
+                <Setter Property="FrameworkElement.MinHeight" Value="22" />
+              </Style>
+            </ListBox.ItemContainerStyle>
+            <ListBox.ItemTemplate>
+              <DataTemplate DataType="ListBoxItem">
+                <StackPanel Orientation="Horizontal">
+                  <TextBlock Text="■" Margin="5 0 0 0" VerticalAlignment="Center" TextBlock.TextAlignment="Center" />
+                  <TextBlock Margin="5 0 0 0" TextBlock.Foreground="#FF000000" Text="{Binding FileName}" />
+                </StackPanel>
+              </DataTemplate>
+            </ListBox.ItemTemplate>
+          </ListBox>
+        </Grid>
+        <Border Grid.Row="0" Grid.Column="1" Style="{StaticResource GridBorder}" BorderThickness="1" />
+        <Border Grid.Row="1" Grid.Column="1" BorderThickness="1,0,1,1" BorderBrush="{StaticResource BottomBorderBrush}" />
+        <Grid Grid.Row="0" Grid.Column="1">
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="115" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="100" />
+            <ColumnDefinition Width="100" />
+          </Grid.ColumnDefinitions>
+          <ComboBox Grid.Column="0" SelectedValuePath="Name" DisplayMemberPath="Name" VerticalAlignment="Center" HorizontalAlignment="Left" FontWeight="Bold" ItemsSource="{Binding RevitProducts}" SelectedItem="{Binding SelectedRevitProduct}" SelectedValue="{Binding Config.SelectRevit}">
+            <ComboBox.Background>
+              <LinearGradientBrush />
+            </ComboBox.Background>
+          </ComboBox>
+          <TextBlock Name="Version" Grid.Column="2" Text="版本号：" TextBlock.FontWeight="Bold" Width="100" HorizontalAlignment="Right" VerticalAlignment="Center" TextBlock.TextAlignment="Right" />
+                    <TextBlock Grid.Column="3" HorizontalAlignment="Left" VerticalAlignment="Center" TextBlock.TextAlignment="Center" Text="{Binding SelectedBeePCProduct.Version}" Visibility="{Binding BeePCProducts, Converter={StaticResource ResourceKey=ObjectConverter }, ConverterParameter=TextBlock}" />
+          <ComboBox Grid.Column="3" SelectedValuePath="InstallPath" VerticalAlignment="Center" FontWeight="Bold" DisplayMemberPath="Version" HorizontalAlignment="Left" ItemsSource="{Binding BeePCProducts}" SelectedValue="{Binding Config.SelectBeePC}" SelectedItem="{Binding SelectedBeePCProduct}" Visibility="{Binding BeePCProducts, Converter={StaticResource ObjectConverter}, ConverterParameter=ComboBox}">
+            <ComboBox.Background>
+              <LinearGradientBrush />
+            </ComboBox.Background>
+          </ComboBox>
+        </Grid>
+        <Grid Name="GridSlider" Grid.Row="1" Grid.Column="1">
+          <Grid.RowDefinitions>
+            <RowDefinition Height="1" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="1" />
+          </Grid.RowDefinitions>
+          <DockPanel Grid.Row="1" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" PreviewMouseUp="StackPanel_PreviewMouseUp">
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+              <TextBlock Name="TipText" Text="滑动打开Slip to Open " Background="#00F8F8F8" HorizontalAlignment="Right" TextBlock.FontSize="12" TextBlock.FontWeight="Bold" TextBlock.FontStyle="Normal" TextBlock.FontFamily="微软雅黑" Margin="0,0,30,0">
+                <TextBlock.Resources>
+                  <Style x:Key="{x:Type TextBlock}" TargetType="{x:Type TextBlock}">
+                    <Style.Triggers>
+                      <EventTrigger RoutedEvent="Loaded">
+                        <BeginStoryboard>
+                          <Storyboard RepeatBehavior="Forever">
+                            <DoubleAnimation Storyboard.TargetProperty="(TextBlock.Foreground).(GradientBrush.GradientStops)[0].(GradientStop.Offset)" From="-0.2" To="1" Duration="0:0:1" BeginTime="0:0:0" />
+                            <DoubleAnimation Storyboard.TargetProperty="(TextBlock.Foreground).(GradientBrush.GradientStops)[1].(GradientStop.Offset)" From="-0.18" To="1.02" Duration="0:0:1" BeginTime="0:0:0" />
+                            <DoubleAnimation Storyboard.TargetProperty="(TextBlock.Foreground).(GradientBrush.GradientStops)[2].(GradientStop.Offset)" From="0" To="1.2" Duration="0:0:1" BeginTime="0:0:0" />
+                          </Storyboard>
+                        </BeginStoryboard>
+                      </EventTrigger>
+                    </Style.Triggers>
+                  </Style>
+                </TextBlock.Resources>
+                <TextBlock.Foreground>
+                  <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
+                    <GradientStop Color="#FF363636" Offset="0" />
+                    <GradientStop Color="#FFC6C6C6" Offset="0.05" />
+                    <GradientStop Color="#FF363636" Offset="0.5" />
+                  </LinearGradientBrush>
+                </TextBlock.Foreground>
+              </TextBlock>
+              <Slider Name="Slider" Style="{StaticResource SliderStyle}" VerticalAlignment="Center" Width="300" Margin="5" Height="16" Maximum="1" Minimum="0" Value="0" />
+            </StackPanel>
+          </DockPanel>
+        </Grid>
+        <Border Grid.Row="0" Grid.Column="2" Style="{StaticResource GridBorder}" BorderThickness="1" />
+        <Border Grid.Row="1" Grid.Column="2" BorderThickness="1" BorderBrush="{StaticResource BottomBorderBrush}" />
+        <StackPanel Grid.Row="0" Grid.Column="2">
+          <TextBlock Text="关注我们" VerticalAlignment="Center" HorizontalAlignment="Left" TextBlock.TextAlignment="Left" TextBlock.FontWeight="Bold" Margin="22,4" />
+        </StackPanel>
+        <Grid Grid.Row="1" Grid.Column="2" Background="{StaticResource TranslucenceBackgroundBrush}">
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+          </Grid.ColumnDefinitions>
+          <StackPanel Grid.Column="0" Margin="5">
+            <Image Source="pack://application:,,,/Resource/Image/we_chat.jpg" HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" Height="65">
+                            <hc:Interaction.Triggers>
+                                <hc:EventTrigger EventName="MouseLeftButtonUp" />
+              </hc:Interaction.Triggers>
+            </Image>
+            <TextBlock Text="公众号" HorizontalAlignment="Center" VerticalAlignment="Center" />
+          </StackPanel>
+          <StackPanel Grid.Column="1" Margin="5">
+            <Image Source="pack://application:,,,/Resource/Image/qq_qr.png" HorizontalAlignment="Center" VerticalAlignment="Center" Cursor="Hand" Height="65">
+                            <hc:Interaction.Triggers>
+                                <hc:EventTrigger EventName="MouseLeftButtonUp">
+                                    <hc:EventToCommand CommandParameter="{Binding Config.QQUrl}" Command="{Binding OpenUrlCmd}" />
+                </hc:EventTrigger>
+              </hc:Interaction.Triggers>
+            </Image>
+            <TextBlock Text="扫码加群" HorizontalAlignment="Center" VerticalAlignment="Center" />
+          </StackPanel>
+        </Grid>
+      </Grid>
+      <Grid Grid.Row="3" Background="#FFD5D5D5" Margin="0,1,0,0" />
+    </Grid>
+  </Grid>
+</hc:BlurWindow>

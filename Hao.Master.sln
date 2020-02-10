@@ -5,16 +5,30 @@ VisualStudioVersion = 16.0.29709.97
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hao.Export", "Hao.Export\Hao.Export.csproj", "{CFA1EF4E-6B88-4029-83B3-3BFE26EA28FC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hao.Launcher", "Hao.Launcher\Hao.Launcher.csproj", "{ADDD1737-0D71-412F-AB49-7DE2B872EAAF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
 		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{CFA1EF4E-6B88-4029-83B3-3BFE26EA28FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CFA1EF4E-6B88-4029-83B3-3BFE26EA28FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFA1EF4E-6B88-4029-83B3-3BFE26EA28FC}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{CFA1EF4E-6B88-4029-83B3-3BFE26EA28FC}.Debug|x64.Build.0 = Debug|Any CPU
 		{CFA1EF4E-6B88-4029-83B3-3BFE26EA28FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CFA1EF4E-6B88-4029-83B3-3BFE26EA28FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFA1EF4E-6B88-4029-83B3-3BFE26EA28FC}.Release|x64.ActiveCfg = Release|Any CPU
+		{CFA1EF4E-6B88-4029-83B3-3BFE26EA28FC}.Release|x64.Build.0 = Release|Any CPU
+		{ADDD1737-0D71-412F-AB49-7DE2B872EAAF}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{ADDD1737-0D71-412F-AB49-7DE2B872EAAF}.Debug|x64.ActiveCfg = Debug|x64
+		{ADDD1737-0D71-412F-AB49-7DE2B872EAAF}.Debug|x64.Build.0 = Debug|x64
+		{ADDD1737-0D71-412F-AB49-7DE2B872EAAF}.Release|Any CPU.ActiveCfg = Release|x64
+		{ADDD1737-0D71-412F-AB49-7DE2B872EAAF}.Release|x64.ActiveCfg = Release|x64
+		{ADDD1737-0D71-412F-AB49-7DE2B872EAAF}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{CFA1EF4E-6B88-4029-83B3-3BFE26EA28FC}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>Adsk.RPCA.MachineData</RootNamespace>
-    <AssemblyName>AdskCNC</AssemblyName>
+    <RootNamespace>Hao.Export</RootNamespace>
+    <AssemblyName>Hao.Export</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -121,44 +121,6 @@
     <Compile Include="SteelGroupElementRebarBase.cs" />
     <Compile Include="VoidsAndMountParts.cs" />
     <Compile Include="WireItem.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\AdskBase\AdskBase.csproj">
-      <Project>{ebce67a5-9a8a-4090-9501-a76b1c9bccbc}</Project>
-      <Name>AdskBase</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\AdskGe\AdskGe.csproj">
-      <Project>{23501083-D483-47AF-BC55-02DFCF370B96}</Project>
-      <Name>AdskGe</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\AdskLocalisation\AdskLocalisation.csproj">
-      <Project>{a8a15420-9389-4c59-894f-452b99e56edd}</Project>
-      <Name>AdskLocalisation</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\AdskRevitUI\AdskRevitUI.csproj">
-      <Project>{E22588A7-7657-4DE4-9B9D-0B60D6889A30}</Project>
-      <Name>AdskRevitUI</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\AdskRvtBase\AdskRvtBase.csproj">
-      <Project>{8324D37D-2C08-48B4-A6C6-E8396E9B3C9A}</Project>
-      <Name>AdskRvtBase</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\AdskRvtGeometry\AdskRvtGeometry.csproj">
-      <Project>{0ad2f679-c369-411a-b5fd-77a537f825d8}</Project>
-      <Name>AdskRvtGeometry</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\AdskSlab\AdskSlab.csproj">
-      <Project>{5b33c848-cfbd-4c05-b6d8-b7c8c7ce1364}</Project>
-      <Name>AdskSlab</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\AdskWall\AdskWall.csproj">
-      <Project>{5173bd49-bce8-4027-bf85-15f68d7fbb4c}</Project>
-      <Name>AdskWall</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\PrecastUtils\PrecastUtils.csproj">
-      <Project>{7908c3a8-4b95-4f6b-8608-ea0cac5f0880}</Project>
-      <Name>PrecastUtils</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

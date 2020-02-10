@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:luncher="clr-namespace:Hao.Launcher">
+  <Geometry x:Key="ThumbsUpGeometry">M68.191078 915.462005l161.384597 0L229.575676 431.30719 68.191078 431.30719 68.191078 915.462005zM955.808922 471.653083c0-44.582381-36.109406-80.69281-80.69281-80.69281L620.329241 390.960273 658.859789 206.578915c0.807389-4.034896 1.412163-8.271384 1.412163-12.709463 0-16.743336-6.859221-31.873941-17.752316-42.767036l-42.968627-42.565445L333.871043 374.216937c-14.524808 14.7264-23.602557 34.899858-23.602557 57.090253l0 403.462005c0 44.582381 36.109406 80.69281 80.69281 80.69281l363.116111 0c33.487695 0 62.133106-20.37505 74.236771-49.222051l121.643478-284.441261c3.63069-9.279341 5.850242-19.164478 5.850242-29.452799L955.807898 475.083206l-0.403183-0.403183L955.808922 471.653083z</Geometry>
+  <luncher:ObjectConverter x:Key="ObjectConverter" />
+  <Color x:Key="TranslucenceBackgroundColor">#F8F8F8</Color>
+  <Color x:Key="BottomBorderBrushColor">#b2b2b2</Color>
+  <SolidColorBrush x:Key="TranslucenceBackgroundBrush" Color="{StaticResource TranslucenceBackgroundColor}" Opacity="0" />
+  <SolidColorBrush x:Key="BottomBorderBrush" Color="{StaticResource BottomBorderBrushColor}" />
+  <LinearGradientBrush x:Key="SubTitle" StartPoint="1,0" EndPoint="1,1">
+    <LinearGradientBrush.GradientStops>
+      <GradientStop Offset="0" Color="#fff8f8f8" />
+      <GradientStop Offset="1" Color="#fff0f0f0" />
+    </LinearGradientBrush.GradientStops>
+  </LinearGradientBrush>
+  <Style x:Key="GridBorder" TargetType="{x:Type Border}">
+    <Setter Property="Border.BorderBrush" Value="#FFB2B2B2" />
+    <Setter Property="Border.Background" Value="{StaticResource SubTitle}" />
+  </Style>
+  <Style x:Key="SliderRepeatButtonHorizontalStyle" TargetType="{x:Type RepeatButton}">
+    <Setter Property="FrameworkElement.OverridesDefaultStyle" Value="True" />
+    <Setter Property="Control.Background" Value="#00FFFFFF" />
+    <Setter Property="UIElement.Focusable" Value="False" />
+    <Setter Property="Control.IsTabStop" Value="False" />
+    <Setter Property="Control.Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="{x:Type RepeatButton}">
+          <Border Background="#00FFFFFF" CornerRadius="8" Margin="-8,0" Height="{TemplateBinding FrameworkElement.Height}" BorderThickness="1" Width="{TemplateBinding FrameworkElement.Width}">
+            <Rectangle RadiusX="8" RadiusY="8" StrokeThickness="1" Fill="{TemplateBinding Control.Background}" Height="{TemplateBinding FrameworkElement.Height}" />
+          </Border>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+  <ControlTemplate x:Key="SliderThumb" TargetType="{x:Type Thumb}">
+    <Border Name="BorderDot" Effect="{DynamicResource EffectShadow1}" BorderThickness="0" BorderBrush="{DynamicResource PrimaryBrush}" Width="16" Height="16" Background="#FFFFFFFF" CornerRadius="8" />
+    <ControlTemplate.Triggers>
+      <Trigger Property="UIElement.IsMouseOver" Value="True">
+        <Setter Value="{DynamicResource EffectShadow2}" Property="UIElement.Effect" />
+      </Trigger>
+      <EventTrigger RoutedEvent="MouseRightButtonDown" />
+      <EventTrigger RoutedEvent="MouseRightButtonUp" />
+      <EventTrigger RoutedEvent="PreviewMouseDown">
+        <EventTrigger.Actions>
+          <BeginStoryboard>
+            <Storyboard>
+              <ThicknessAnimation To="2" Duration="0:0:.1" Storyboard.TargetName="BorderDot" Storyboard.TargetProperty="BorderThickness" />
+            </Storyboard>
+          </BeginStoryboard>
+        </EventTrigger.Actions>
+      </EventTrigger>
+      <EventTrigger RoutedEvent="PreviewMouseUp">
+        <EventTrigger.Actions>
+          <BeginStoryboard>
+            <Storyboard>
+              <ThicknessAnimation To="0" Duration="0:0:.1" Storyboard.TargetName="BorderDot" Storyboard.TargetProperty="BorderThickness" />
+            </Storyboard>
+          </BeginStoryboard>
+        </EventTrigger.Actions>
+      </EventTrigger>
+    </ControlTemplate.Triggers>
+  </ControlTemplate>
+  <ControlTemplate x:Key="SliderHorizontal" TargetType="{x:Type Slider}">
+    <Grid>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" MinHeight="{TemplateBinding FrameworkElement.Height}" />
+        <RowDefinition Height="Auto" />
+      </Grid.RowDefinitions>
+      <Border Grid.Row="0" Grid.RowSpan="3" Background="#00FFFFFF" CornerRadius="8" Margin="-8,0" Height="{TemplateBinding FrameworkElement.Height}" Width="{TemplateBinding FrameworkElement.Width}">
+        <Rectangle RadiusX="8" RadiusY="8" StrokeThickness="0.5" Stroke="#FF000000" Opacity="0.3" Fill="#FF7EC3F8" Height="{TemplateBinding FrameworkElement.Height}" />
+      </Border>
+      <Track Name="PART_Track" Margin="8,0" Grid.Row="1">
+        <Track.DecreaseRepeatButton>
+          <RepeatButton Background="{DynamicResource PrimaryBrush}" Style="{StaticResource SliderRepeatButtonHorizontalStyle}" />
+        </Track.DecreaseRepeatButton>
+        <Track.IncreaseRepeatButton>
+          <RepeatButton Command="{x:Static Slider.IncreaseLarge}" Opacity="0" Style="{StaticResource SliderRepeatButtonHorizontalStyle}" />
+        </Track.IncreaseRepeatButton>
+        <Track.Thumb>
+          <Thumb Name="Thumb" ClipToBounds="False" Width="{TemplateBinding FrameworkElement.Height}" Margin="-8,0" Height="{TemplateBinding FrameworkElement.Height}" Focusable="False" OverridesDefaultStyle="True" Template="{StaticResource SliderThumb}" VerticalAlignment="Center" />
+        </Track.Thumb>
+      </Track>
+    </Grid>
+  </ControlTemplate>
+  <Style x:Key="SliderStyle" TargetType="{x:Type Slider}">
+    <Setter Property="Stylus.IsPressAndHoldEnabled" Value="False" />
+    <Setter Property="Control.Background" Value="{DynamicResource SecondaryRegionBrush}" />
+    <Setter Property="Control.BorderBrush" Value="#FFFFFFFF" />
+    <Setter Property="Control.Foreground" Value="{DynamicResource DarkPrimaryBrush}" />
+    <Setter Property="Control.Template" Value="{StaticResource SliderHorizontal}" />
+    <Style.Triggers>
+      <Trigger Property="UIElement.IsEnabled" Value="False">
+        <Setter Property="UIElement.Opacity" Value=".4" />
+      </Trigger>
+    </Style.Triggers>
+  </Style>
+    <luncher:Url2ImageConverter x:Key="Url2ImageConverter" />
+    <luncher:OpenWindowCommand x:Key="OpenWindowCommand" />
+    <luncher:Int2VisibilityConverter x:Key="Int2VisibilityConverter" />
+    <luncher:Int2VisibilityInverseConverter x:Key="Int2VisibilityInverseConverter" />
+  <Style x:Key="BtnInfoStyle" TargetType="{x:Type Button}">
+    <Setter Property="FrameworkElement.Width" Value="Auto" />
+    <Setter Property="FrameworkElement.Height" Value="30" />
+    <Setter Property="Control.BorderThickness" Value="0" />
+    <Setter Property="Control.Background" Value="#00FFFFFF" />
+    <Setter Property="Control.Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="{x:Type Button}">
+          <Border Name="BorderBinder" Background="#00DEDEDE" BorderThickness="{TemplateBinding Control.BorderThickness}" BorderBrush="#FFE4E4E4">
+            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+          </Border>
+          <ControlTemplate.Triggers>
+            <Trigger Property="UIElement.IsMouseOver" Value="True">
+              <Setter TargetName="BorderBinder" Property="Border.Background" Value="#00FFFFFF" />
+              <Setter TargetName="BorderBinder" Property="Border.BorderBrush" Value="#00FFFFFF" />
+            </Trigger>
+          </ControlTemplate.Triggers>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+</ResourceDictionary>
