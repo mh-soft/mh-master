@@ -1,0 +1,286 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D3005AE6-9FA8-4E82-BD9F-1C7D6CB706E2}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Tekla.Common.Geometry</RootNamespace>
+    <AssemblyName>Tekla.Common.Geometry</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System.Core" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Algorithms\Aabb.cs" />
+    <Compile Include="Algorithms\InputBox.cs" />
+    <Compile Include="Algorithms\IQuantizedAabbVisitor.cs" />
+    <Compile Include="Algorithms\KdTree3.cs" />
+    <Compile Include="Algorithms\KdTreeNode3.cs" />
+    <Compile Include="Algorithms\NamespaceDoc.cs" />
+    <Compile Include="Algorithms\QuantizedAxisAlignedBox3.cs" />
+    <Compile Include="Algorithms\QuantizedAxisAlignedBox3Tree.cs" />
+    <Compile Include="Algorithms\QuantizedAxisAlignedBox3TreeNode.cs" />
+    <Compile Include="Algorithms\VisitorStackItem.cs" />
+    <Compile Include="ArcExtensionMethods.cs" />
+    <Compile Include="AxisAlignedBoxExtensionMethods.cs" />
+    <Compile Include="BoxExtensionMethods.cs" />
+    <Compile Include="CircleExtensionMethods.cs" />
+    <Compile Include="CylinderExtensionMethods.cs" />
+    <Compile Include="DistanceArc3.cs" />
+    <Compile Include="DistanceAxisAlignedBox3.cs" />
+    <Compile Include="DistanceBox3.cs" />
+    <Compile Include="DistanceCircle3.cs" />
+    <Compile Include="DistanceCircle3Circle3.cs" />
+    <Compile Include="DistanceLine2.cs" />
+    <Compile Include="DistanceLine3.cs" />
+    <Compile Include="DistanceLine3Arc3.cs" />
+    <Compile Include="DistanceLine3Box3.cs" />
+    <Compile Include="DistanceLine3Circle3.cs" />
+    <Compile Include="DistanceLine3Line3.cs" />
+    <Compile Include="DistanceLine3Ray3.cs" />
+    <Compile Include="DistanceLine3Rectangle3.cs" />
+    <Compile Include="DistanceLine3Segment3.cs" />
+    <Compile Include="DistanceLine3Triangle3.cs" />
+    <Compile Include="DistancePlane3.cs" />
+    <Compile Include="DistancePlane3Arc3.cs" />
+    <Compile Include="DistancePlane3Circle3.cs" />
+    <Compile Include="DistancePlane3Line3.cs" />
+    <Compile Include="DistancePlane3Ray3.cs" />
+    <Compile Include="DistancePlane3Rectangle3.cs" />
+    <Compile Include="DistancePlane3Segment3.cs" />
+    <Compile Include="DistancePlane3Triangle3.cs" />
+    <Compile Include="DistanceRay3.cs" />
+    <Compile Include="DistanceRay3Box3.cs" />
+    <Compile Include="DistanceRay3Ray3.cs" />
+    <Compile Include="DistanceRay3Rectangle3.cs" />
+    <Compile Include="DistanceRay3Segment3.cs" />
+    <Compile Include="DistanceRay3Triangle3.cs" />
+    <Compile Include="DistanceRectangle3.cs" />
+    <Compile Include="DistanceRectangle3Rectangle3.cs" />
+    <Compile Include="DistanceSegment3.cs" />
+    <Compile Include="DistanceSegment3Box3.cs" />
+    <Compile Include="DistanceSegment3Rectangle3.cs" />
+    <Compile Include="DistanceSegment3Segment3.cs" />
+    <Compile Include="DistanceSegment3Triangle3.cs" />
+    <Compile Include="DistanceTriangle2.cs" />
+    <Compile Include="DistanceTriangle3.cs" />
+    <Compile Include="DistanceTriangle3Rectangle3.cs" />
+    <Compile Include="DistanceTriangle3Triangle3.cs" />
+    <Compile Include="DistanceVector2.cs" />
+    <Compile Include="DistanceVector2Line2.cs" />
+    <Compile Include="DistanceVector2Triangle2.cs" />
+    <Compile Include="DistanceVector3.cs" />
+    <Compile Include="DistanceVector3Arc3.cs" />
+    <Compile Include="DistanceVector3Box3.cs" />
+    <Compile Include="DistanceVector3Circle3.cs" />
+    <Compile Include="DistanceVector3Plane3.cs" />
+    <Compile Include="DistanceVector3Rectangle3.cs" />
+    <Compile Include="DistanceVector3Segment3.cs" />
+    <Compile Include="DistanceVector3Triangle3.cs" />
+    <Compile Include="EllipseExtensionMethods.cs" />
+    <Compile Include="Intersection.cs" />
+    <Compile Include="IntersectionArc2.cs" />
+    <Compile Include="IntersectionArc2Arc2.cs" />
+    <Compile Include="IntersectionArc2Circle2.cs" />
+    <Compile Include="IntersectionArc3.cs" />
+    <Compile Include="IntersectionAxisAlignedBox2.cs" />
+    <Compile Include="IntersectionAxisAlignedBox2AxisAlignedBox2.cs" />
+    <Compile Include="IntersectionAxisAlignedBox3.cs" />
+    <Compile Include="IntersectionAxisAlignedBox3AxisAlignedBox3.cs" />
+    <Compile Include="IntersectionBox2.cs" />
+    <Compile Include="IntersectionBox2Box2.cs" />
+    <Compile Include="IntersectionBox3.cs" />
+    <Compile Include="IntersectionBox3Box3.cs" />
+    <Compile Include="IntersectionCircle2.cs" />
+    <Compile Include="IntersectionCircle2Circle2.cs" />
+    <Compile Include="IntersectionCircle3.cs" />
+    <Compile Include="IntersectionCylinder3.cs" />
+    <Compile Include="IntersectionLine2.cs" />
+    <Compile Include="IntersectionLine2Arc2.cs" />
+    <Compile Include="IntersectionLine2Box2.cs" />
+    <Compile Include="IntersectionLine2Circle2.cs" />
+    <Compile Include="IntersectionLine2Line2.cs" />
+    <Compile Include="IntersectionLine2Triangle2.cs" />
+    <Compile Include="IntersectionLine3.cs" />
+    <Compile Include="IntersectionLine3Box3.cs" />
+    <Compile Include="IntersectionLine3Cylinder3.cs" />
+    <Compile Include="IntersectionLine3Plane3.cs" />
+    <Compile Include="IntersectionLine3Torus3.cs" />
+    <Compile Include="IntersectionLine3Triangle3.cs" />
+    <Compile Include="IntersectionPlane3.cs" />
+    <Compile Include="IntersectionPlane3Arc3.cs" />
+    <Compile Include="IntersectionPlane3Box3.cs" />
+    <Compile Include="IntersectionPlane3Circle3.cs" />
+    <Compile Include="IntersectionPlane3Plane3.cs" />
+    <Compile Include="IntersectionPlane3Triangle3.cs" />
+    <Compile Include="IntersectionRay2.cs" />
+    <Compile Include="IntersectionRay2Arc2.cs" />
+    <Compile Include="IntersectionRay2Circle2.cs" />
+    <Compile Include="IntersectionRay2Segment2.cs" />
+    <Compile Include="IntersectionRay3.cs" />
+    <Compile Include="IntersectionRay3AxisAlignedBox3.cs" />
+    <Compile Include="IntersectionRay3Box3.cs" />
+    <Compile Include="IntersectionRay3Cylinder3.cs" />
+    <Compile Include="IntersectionRay3Plane3.cs" />
+    <Compile Include="IntersectionRay3Torus3.cs" />
+    <Compile Include="IntersectionRay3Triangle3.cs" />
+    <Compile Include="IntersectionSegment2.cs" />
+    <Compile Include="IntersectionSegment2Box2.cs" />
+    <Compile Include="IntersectionSegment2Triangle2.cs" />
+    <Compile Include="IntersectionSegment3.cs" />
+    <Compile Include="IntersectionSegment3Box3.cs" />
+    <Compile Include="IntersectionSegment3Cylinder3.cs" />
+    <Compile Include="IntersectionSegment3Plane3.cs" />
+    <Compile Include="IntersectionSegment3Triangle3.cs" />
+    <Compile Include="IntersectionTorus3.cs" />
+    <Compile Include="IntersectionTriangle2.cs" />
+    <Compile Include="IntersectionTriangle2Triangle2.cs" />
+    <Compile Include="IntersectionTriangle3.cs" />
+    <Compile Include="IntersectionTriangle3Box3.cs" />
+    <Compile Include="IntersectionTriangle3Triangle3.cs" />
+    <Compile Include="IntersectionUtility3.cs" />
+    <Compile Include="Intersector1.cs" />
+    <Compile Include="IsInsideAxisAlignedBox2.cs" />
+    <Compile Include="MathBase.cs" />
+    <Compile Include="Matrix4Factory.cs" />
+    <Compile Include="PlaneSideClassification.cs" />
+    <Compile Include="Polynomial1.cs" />
+    <Compile Include="PolynomialRoots.cs" />
+    <Compile Include="Primitives\AffineTransform2.cs" />
+    <Compile Include="Primitives\AffineTransform3.cs" />
+    <Compile Include="Primitives\Angle.cs" />
+    <Compile Include="Primitives\Arc2.cs" />
+    <Compile Include="Primitives\Arc3.cs" />
+    <Compile Include="Primitives\AxisAlignedBox2.cs" />
+    <Compile Include="Primitives\AxisAlignedBox3.cs" />
+    <Compile Include="Primitives\Box2.cs" />
+    <Compile Include="Primitives\Box3.cs" />
+    <Compile Include="Primitives\Circle2.cs" />
+    <Compile Include="Primitives\Circle3.cs" />
+    <Compile Include="Primitives\Cylinder3.cs" />
+    <Compile Include="Primitives\Ellipse2.cs" />
+    <Compile Include="Primitives\EllipticArc2.cs" />
+    <Compile Include="Primitives\Format.cs" />
+    <Compile Include="Primitives\Line2.cs" />
+    <Compile Include="Primitives\Line3.cs" />
+    <Compile Include="Primitives\MathBase.cs" />
+    <Compile Include="Primitives\Matrix2.cs" />
+    <Compile Include="Primitives\Matrix3.cs" />
+    <Compile Include="Primitives\Matrix4.cs" />
+    <Compile Include="Primitives\Plane3.cs" />
+    <Compile Include="Primitives\Quaternion.cs" />
+    <Compile Include="Primitives\Ray2.cs" />
+    <Compile Include="Primitives\Ray3.cs" />
+    <Compile Include="Primitives\Rectangle3.cs" />
+    <Compile Include="Primitives\Segment2.cs" />
+    <Compile Include="Primitives\Segment3.cs" />
+    <Compile Include="Primitives\Sphere3.cs" />
+    <Compile Include="Primitives\Torus3.cs" />
+    <Compile Include="Primitives\Triangle2.cs" />
+    <Compile Include="Primitives\Triangle3.cs" />
+    <Compile Include="Primitives\UnitVector2.cs" />
+    <Compile Include="Primitives\UnitVector3.cs" />
+    <Compile Include="Primitives\Vector2.cs" />
+    <Compile Include="Primitives\Vector3.cs" />
+    <Compile Include="Primitives\Vector4.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QuaternionExtensionMethods.cs" />
+    <Compile Include="QuaternionFactory.cs" />
+    <Compile Include="RectangleExtensionMethods.cs" />
+    <Compile Include="SegmentExtensionMethods.cs" />
+    <Compile Include="Shapes\FacetedBRep.cs" />
+    <Compile Include="Shapes\FacetedBRepBuilder.cs" />
+    <Compile Include="Shapes\FacetedBRepFace.cs" />
+    <Compile Include="Shapes\FacetedBRepFaceHole.cs" />
+    <Compile Include="Shapes\NamespaceDoc.cs" />
+    <Compile Include="Shapes\OpenCascade\BezierCurve2.cs" />
+    <Compile Include="Shapes\OpenCascade\BezierCurve3.cs" />
+    <Compile Include="Shapes\OpenCascade\BRep.cs" />
+    <Compile Include="Shapes\OpenCascade\BSplineCurve2.cs" />
+    <Compile Include="Shapes\OpenCascade\BSplineCurve3.cs" />
+    <Compile Include="Shapes\OpenCascade\CircleCurve2.cs" />
+    <Compile Include="Shapes\OpenCascade\CircleCurve3.cs" />
+    <Compile Include="Shapes\OpenCascade\ConeSurface.cs" />
+    <Compile Include="Shapes\OpenCascade\CylinderSurface.cs" />
+    <Compile Include="Shapes\OpenCascade\Edge3.cs" />
+    <Compile Include="Shapes\OpenCascade\EllipseCurve2.cs" />
+    <Compile Include="Shapes\OpenCascade\EllipseCurve3.cs" />
+    <Compile Include="Shapes\OpenCascade\Face.cs" />
+    <Compile Include="Shapes\OpenCascade\HyperbolaCurve2.cs" />
+    <Compile Include="Shapes\OpenCascade\HyperbolaCurve3.cs" />
+    <Compile Include="Shapes\OpenCascade\ICurve2.cs" />
+    <Compile Include="Shapes\OpenCascade\ICurve3.cs" />
+    <Compile Include="Shapes\OpenCascade\ISurface.cs" />
+    <Compile Include="Shapes\OpenCascade\LineCurve2.cs" />
+    <Compile Include="Shapes\OpenCascade\LineCurve3.cs" />
+    <Compile Include="Shapes\OpenCascade\NamespaceDoc.cs" />
+    <Compile Include="Shapes\OpenCascade\Orientation.cs" />
+    <Compile Include="Shapes\OpenCascade\ParabolaCurve2.cs" />
+    <Compile Include="Shapes\OpenCascade\ParabolaCurve3.cs" />
+    <Compile Include="Shapes\OpenCascade\PlaneSurface.cs" />
+    <Compile Include="Shapes\OpenCascade\Shell.cs" />
+    <Compile Include="Shapes\OpenCascade\Solid.cs" />
+    <Compile Include="Shapes\OpenCascade\SphereSurface.cs" />
+    <Compile Include="Shapes\OpenCascade\SurfaceOfRevolution.cs" />
+    <Compile Include="Shapes\OpenCascade\TorusSurface.cs" />
+    <Compile Include="Shapes\OpenCascade\Wire3.cs" />
+    <Compile Include="Shapes\SweptDiskSolid.cs" />
+    <Compile Include="Shapes\Tools\FacetedBRepEdgeBuilder.cs" />
+    <Compile Include="Shapes\Tools\FacetedBRepTesselationExtensions.cs" />
+    <Compile Include="Shapes\Tools\FacetedBRepWriterExtension.cs" />
+    <Compile Include="Shapes\Tools\SweptDiskSolidExtensions.cs" />
+    <Compile Include="Shapes\Zkit\NamespaceDoc.cs" />
+    <Compile Include="Shapes\Zkit\TriangleMesh.cs" />
+    <Compile Include="Topology\Contour2.cs" />
+    <Compile Include="Topology\EdgeArc2.cs" />
+    <Compile Include="Topology\EdgeArc3.cs" />
+    <Compile Include="Topology\EdgeEllipticArc2.cs" />
+    <Compile Include="Topology\EdgeLineSegment2.cs" />
+    <Compile Include="Topology\EdgeLineSegment3.cs" />
+    <Compile Include="Topology\EdgePolyLineSegment2.cs" />
+    <Compile Include="Topology\EdgePolyLineSegment3.cs" />
+    <Compile Include="Topology\IEdge2.cs" />
+    <Compile Include="Topology\IEdge3.cs" />
+    <Compile Include="Topology\NamespaceDoc.cs" />
+    <Compile Include="Topology\Wire2.cs" />
+    <Compile Include="Topology\Wire3.cs" />
+    <Compile Include="Transform3ExtensionMethods.cs" />
+    <Compile Include="Transform3Factory.cs" />
+    <Compile Include="TriangleExtensionMethods.cs" />
+    <Compile Include="UnitVectorExtensionMethods.cs" />
+    <Compile Include="Vector3Factory.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
